@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.megabox.web.mapper.JYMapper">
+	<insert id="insert"></insert>
+	<select id="selectList"></select>
+	<select id="selectOne" resultType="com.megabox.web.domain.Member" parameterType="com.megabox.web.command.Command">
+	        select id,password,name,birth,email,phone,regdate 
+    		from member where id=#{search};
+	</select>
+	<select id="findById" resultType="com.megabox.web.domain.Member" parameterType="com.megabox.web.domain.Movie">
+	        select id,password,name,birth,email,phone,regdate 
+    		from member where name=#{movieSeq} AND phone=#{movieTitle};
+	</select>
+	<select id="findByPw" resultType="com.megabox.web.domain.Member" parameterType="com.megabox.web.domain.Movie">
+	        select id,password,name,birth,email,phone,regdate 
+    		from member where id=#{movieSeq} AND name=#{movieTitle};
+	</select>
+	<select id="count" resultType="String" parameterType="com.megabox.web.command.Command">
+		select count(*) as count from member
+	</select>
+	<update id="passUpdate" parameterType="com.megabox.web.domain.Member">
+	     UPDATE member SET password = #{password} WHERE id=#{id};    
+	</update>
+	<delete id="delete"></delete>
+</mapper>
